@@ -4,8 +4,8 @@
 
 Name: libxaw
 Summary: X Athena Widgets Library
-Version: 1.0.2
-Release: %mkrel 5
+Version: 1.0.3
+Release: %mkrel 1
 Group: System/Libraries
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -25,7 +25,7 @@ BuildRequires: ed
 
 
 %description
-X Athena Widgets Library
+X Athena Widgets Library.
 
 #-----------------------------------------------------------
 
@@ -151,7 +151,3 @@ rm -rf %{buildroot}
 
 %clean
 rm -rf %{buildroot}
-
-
-
-
