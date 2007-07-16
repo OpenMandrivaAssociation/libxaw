@@ -116,7 +116,7 @@ fi
 %{_libdir}/pkgconfig/*.pc
 %dir %{_includedir}/X11/Xaw
 %{_includedir}/X11/Xaw/*
-%{_mandir}/man3/Xaw.3.bz2
+%{_mandir}/man3/Xaw.3.*
 %{_datadir}/aclocal/xaw.m4
 
 #-----------------------------------------------------------
