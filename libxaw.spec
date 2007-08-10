@@ -7,7 +7,7 @@
 Name: libxaw
 Summary: X Athena Widgets Library
 Version: 1.0.3
-Release: %mkrel 4
+Release: %mkrel 5
 Group: System/Libraries
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -107,6 +107,7 @@ Requires: x11-proto-devel >= 1.0.0
 Conflicts: libxorg-x11-devel < 7.0
 Provides: xaw-devel = %{version}-%{release}
 # (walluck): FIXME: we wouldn't provide this but for the packages that incorrectly require it
+Obsoletes: libxaw-devel < 1.0.3-5
 Provides: libxaw-devel = %{version}-%{release}
 
 %description -n %libxawdevel
@@ -136,6 +137,7 @@ Group: Development/X11
 Requires: %libxawdevel = %{version}-%{release}
 Provides: xaw-static-devel = %{version}-%{release}
 # (walluck): FIXME: we wouldn't provide this but for the packages that incorrectly require it
+Obsoletes: libxaw-static-devel < 1.0.3-5
 Provides: libxaw-static-devel = %{version}-%{release}
 Conflicts: libxorg-x11-static-devel < 7.0
 
