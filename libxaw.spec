@@ -1,17 +1,19 @@
 %define libxaw8 %mklibname xaw 8
 %define libxaw7 %mklibname xaw 7
 %define libxaw6 %mklibname xaw 6
+%define libxawdevel %mklibname xaw -d
+%define libxawstaticdevel %mklibname xaw -d -s
 
 Name: libxaw
 Summary: X Athena Widgets Library
 Version: 1.0.3
-Release: %mkrel 3
+Release: %mkrel 4
 Group: System/Libraries
 License: MIT
 URL: http://xorg.freedesktop.org
 Source0: http://xorg.freedesktop.org/releases/individual/lib/libXaw-%{version}.tar.bz2
 Patch0: 0001-fix-potential-infinte-loop-in-XawBoxQueryGeometry.patch
-BuildRoot: %{_tmppath}/%{name}-root
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: libx11-devel >= 1.0.0
 BuildRequires: libxau-devel >= 1.0.0
@@ -24,7 +26,6 @@ BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-util-macros >= 1.0.1
 BuildRequires: ed
 
-
 %description
 X Athena Widgets Library.
 
@@ -34,7 +35,8 @@ X Athena Widgets Library.
 Group: System/Libraries
 Summary: Xaw version 8 library
 Conflicts: libxorg-x11 < 7.0
-Provides: libxaw8 = %{version}
+# (walluck): FIXME: we wouldn't provide this but for the packages that incorrectly require it
+Provides: libxaw8 = %{version}-%{release}
 
 %description -n %libxaw8
 Xaw version 8 library
@@ -54,7 +56,8 @@ Xaw version 8 library
 Group: System/Libraries
 Summary: Xaw version 7 library
 Conflicts: libxorg-x11 < 7.0
-Provides: libxaw7 = %{version}
+# (walluck): FIXME: we wouldn't provide this but for the packages that incorrectly require it
+Provides: libxaw7 = %{version}-%{release}
 
 %description -n %libxaw7
 Xaw version 7 library
@@ -74,7 +77,8 @@ Xaw version 7 library
 Group: System/Libraries
 Summary: Xaw version 6 library
 Conflicts: libxorg-x11 < 7.0
-Provides: libxaw6 = %{version}
+# (walluck): FIXME: we wouldn't provide this but for the packages that incorrectly require it
+Provides: libxaw6 = %{version}-%{release}
 
 %description -n %libxaw6
 Xaw version 6 library
@@ -90,26 +94,30 @@ Xaw version 6 library
 
 #-----------------------------------------------------------
 
-%package devel
+# (walluck): FIXME: this should be split into 4 packages: common, 6, 7, 8
+%package -n %libxawdevel
 Summary: Development files for %{name}
 Group: Development/X11
-Requires: %libxaw8 = %{version}
-Requires: %libxaw7 = %{version}
-Requires: %libxaw6 = %{version}
+Requires: %libxaw8 = %{version}-%{release}
+Requires: %libxaw7 = %{version}-%{release}
+Requires: %libxaw6 = %{version}-%{release}
 Requires: libxmu-devel >= 1.0.0
 Requires: libxt-devel >= 1.0.0
 Requires: x11-proto-devel >= 1.0.0
 Conflicts: libxorg-x11-devel < 7.0
+Provides: xaw-devel = %{version}-%{release}
+# (walluck): FIXME: we wouldn't provide this but for the packages that incorrectly require it
+Provides: libxaw-devel = %{version}-%{release}
 
-%description devel
+%description -n %libxawdevel
 Development files for %{name}
 
-%pre devel
+%pre -n %libxawdevel
 if [ -h %{_includedir}/X11 ]; then
 	rm -f %{_includedir}/X11
 fi
 
-%files devel
+%files -n %libxawdevel
 %defattr(-,root,root)
 %{_libdir}/*.so
 %{_libdir}/*.la
@@ -121,17 +129,20 @@ fi
 
 #-----------------------------------------------------------
 
-%package static-devel
+# (walluck): FIXME: this should be split into 3 packages: 6, 7, 8
+%package -n %libxawstaticdevel
 Summary: Static development files for %{name}
 Group: Development/X11
-Requires: %{name}-devel >= %{version}
-Provides: libxawname-static-devel = %{version}-%{release}
+Requires: %libxawdevel = %{version}-%{release}
+Provides: xaw-static-devel = %{version}-%{release}
+# (walluck): FIXME: we wouldn't provide this but for the packages that incorrectly require it
+Provides: libxaw-static-devel = %{version}-%{release}
 Conflicts: libxorg-x11-static-devel < 7.0
 
-%description static-devel
+%description -n %libxawstaticdevel
 Static development files for %{name}
 
-%files static-devel
+%files -n %libxawstaticdevel
 %defattr(-,root,root)
 %{_libdir}/*.a
 
