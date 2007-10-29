@@ -4,15 +4,18 @@
 %define libxawdevel %mklibname xaw -d
 %define libxawstaticdevel %mklibname xaw -d -s
 
+%define	default_xprint	0
+
 Name: libxaw
 Summary: X Athena Widgets Library
 Version: 1.0.4
-Release: %mkrel 1
+Release: %mkrel 2
 Group: System/Libraries
 License: MIT
 URL: http://xorg.freedesktop.org
 Source0: http://xorg.freedesktop.org/releases/individual/lib/libXaw-%{version}.tar.bz2
 Patch0: 0001-fix-potential-infinte-loop-in-XawBoxQueryGeometry.patch
+Patch1: 0002-default-no-xprint.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: libx11-devel >= 1.0.0
@@ -153,6 +156,9 @@ Static development files for %{name}
 %prep
 %setup -q -n libXaw-%{version}
 %patch0 -p1 -b .infinite-loop
+%if !%{default_xprint}
+%patch1 -p1 -b .no-xprint
+%endif
 
 %build
 %configure2_5x	--x-includes=%{_includedir}\
