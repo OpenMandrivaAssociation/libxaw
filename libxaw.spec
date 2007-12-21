@@ -16,6 +16,7 @@ URL: http://xorg.freedesktop.org
 Source0: http://xorg.freedesktop.org/releases/individual/lib/libXaw-%{version}.tar.bz2
 Patch0: 0001-fix-potential-infinte-loop-in-XawBoxQueryGeometry.patch
 Patch1: 0002-default-no-xprint.patch
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: libx11-devel >= 1.0.0
 BuildRequires: libxau-devel >= 1.0.0
