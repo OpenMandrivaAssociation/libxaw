@@ -44,8 +44,12 @@ Provides: libxaw8 = %{version}-%{release}
 %description -n %libxaw8
 Xaw version 8 library
 
+%if %mdkversion < 200900
 %post -n %libxaw8 -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libxaw8 -p /sbin/ldconfig
+%endif
 
 %files -n %libxaw8
 %defattr(-,root,root)
@@ -65,8 +69,12 @@ Provides: libxaw7 = %{version}-%{release}
 %description -n %libxaw7
 Xaw version 7 library
 
+%if %mdkversion < 200900
 %post -n %libxaw7 -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libxaw7 -p /sbin/ldconfig
+%endif
 
 %files -n %libxaw7
 %defattr(-,root,root)
@@ -86,8 +94,12 @@ Provides: libxaw6 = %{version}-%{release}
 %description -n %libxaw6
 Xaw version 6 library
 
+%if %mdkversion < 200900
 %post -n %libxaw6 -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libxaw6 -p /sbin/ldconfig
+%endif
 
 %files -n %libxaw6
 %defattr(-,root,root)
