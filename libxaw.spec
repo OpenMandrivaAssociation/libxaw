@@ -6,7 +6,7 @@
 Name: libxaw
 Summary: X Athena Widgets Library
 Version: 1.0.5
-Release: %mkrel 2
+Release: %mkrel 3
 Group: System/Libraries
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -63,7 +63,6 @@ Xaw version 7 library
 Summary: Development files for %{name}
 Group: Development/X11
 Requires: %libxaw7 = %{version}-%{release}
-Requires: %libxaw6 = %{version}-%{release}
 Requires: libxmu-devel >= 1.0.0
 Requires: libxt-devel >= 1.0.0
 Requires: x11-proto-devel >= 1.0.0
