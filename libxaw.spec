@@ -1,4 +1,3 @@
-%define libxaw8 %mklibname xaw 8
 %define libxaw7 %mklibname xaw 7
 %define libxaw6 %mklibname xaw 6
 %define libxawdevel %mklibname xaw -d
@@ -7,53 +6,34 @@
 Name: libxaw
 Summary: X Athena Widgets Library
 Version: 1.0.5
-Release: %mkrel 1
+Release: %mkrel 2
 Group: System/Libraries
 License: MIT
 URL: http://xorg.freedesktop.org
 Source0: http://xorg.freedesktop.org/releases/individual/lib/libXaw-%{version}.tar.bz2
+
+Patch1: 0001-xaw6-doesn-t-depend-on-xpm.patch
+Patch2: 0002-Fixed-compile-install-on-darwin.patch
+#   Patch3 was edited to remove the change to .gitignore, as
+# that file isn't distributed in the release tarball.
+Patch3: 0003-Compile-warning-fixes.patch
+Patch4: 0004-Changed-AsciiSrc-widget-to-use-only-binary-selection.patch
+Patch5: 0005-Correct-wrong-sprintf-call-using-variable-format.patch
+Patch6: 0006-Disable-build-of-xaw6-by-default.patch
+
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: libx11-devel >= 1.0.0
 BuildRequires: libxau-devel >= 1.0.0
 BuildRequires: libxext-devel >= 1.0.0
 BuildRequires: libxmu-devel >= 1.0.0
-BuildRequires: libxp-devel >= 1.0.0
 BuildRequires: libxpm-devel >= 3.5.4.2
 BuildRequires: libxt-devel >= 1.0.0
 BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-util-macros >= 1.0.1
-BuildRequires: ed
 
 %description
 X Athena Widgets Library.
-
-#-----------------------------------------------------------
-
-%package -n %libxaw8
-Group: System/Libraries
-Summary: Xaw version 8 library
-Conflicts: libxorg-x11 < 7.0
-# (walluck): FIXME: we wouldn't provide this but for the packages that incorrectly require it
-Provides: libxaw8 = %{version}-%{release}
-
-%description -n %libxaw8
-Xaw version 8 library
-
-%if %mdkversion < 200900
-%post -n %libxaw8 -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libxaw8 -p /sbin/ldconfig
-%endif
-
-%files -n %libxaw8
-%defattr(-,root,root)
-%{_libdir}/libXaw.so.8
-%{_libdir}/libXaw8.so.8
-%{_libdir}/libXaw8.so.8.0.0
-
-#-----------------------------------------------------------
 
 %package -n %libxaw7
 Group: System/Libraries
@@ -79,37 +59,9 @@ Xaw version 7 library
 %{_libdir}/libXaw7.so.7.0.0
 
 #-----------------------------------------------------------
-
-%package -n %libxaw6
-Group: System/Libraries
-Summary: Xaw version 6 library
-Conflicts: libxorg-x11 < 7.0
-# (walluck): FIXME: we wouldn't provide this but for the packages that incorrectly require it
-Provides: libxaw6 = %{version}-%{release}
-
-%description -n %libxaw6
-Xaw version 6 library
-
-%if %mdkversion < 200900
-%post -n %libxaw6 -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libxaw6 -p /sbin/ldconfig
-%endif
-
-%files -n %libxaw6
-%defattr(-,root,root)
-%{_libdir}/libXaw.so.6
-%{_libdir}/libXaw6.so.6
-%{_libdir}/libXaw6.so.6.0.1
-
-#-----------------------------------------------------------
-
-# (walluck): FIXME: this should be split into 4 packages: common, 6, 7, 8
 %package -n %libxawdevel
 Summary: Development files for %{name}
 Group: Development/X11
-Requires: %libxaw8 = %{version}-%{release}
 Requires: %libxaw7 = %{version}-%{release}
 Requires: %libxaw6 = %{version}-%{release}
 Requires: libxmu-devel >= 1.0.0
@@ -137,11 +89,8 @@ fi
 %dir %{_includedir}/X11/Xaw
 %{_includedir}/X11/Xaw/*
 %{_mandir}/man3/Xaw.3.*
-%{_datadir}/aclocal/xaw.m4
 
 #-----------------------------------------------------------
-
-# (walluck): FIXME: this should be split into 3 packages: 6, 7, 8
 %package -n %libxawstaticdevel
 Summary: Static development files for %{name}
 Group: Development/X11
@@ -164,8 +113,15 @@ Static development files for %{name}
 %prep
 %setup -q -n libXaw-%{version}
 
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+
 %build
-%configure2_5x	--x-includes=%{_includedir}\
+%configure	--x-includes=%{_includedir}\
 		--x-libraries=%{_libdir}
 
 %make
