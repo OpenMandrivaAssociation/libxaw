@@ -5,19 +5,13 @@
 
 Name: libxaw
 Summary: X Athena Widgets Library
-Version: 1.0.5
-Release: %mkrel 3
+Version: 1.0.6
+Release: %mkrel 1
 Group: System/Libraries
 License: MIT
 URL: http://xorg.freedesktop.org
 Source0: http://xorg.freedesktop.org/releases/individual/lib/libXaw-%{version}.tar.bz2
 
-Patch1: 0001-xaw6-doesn-t-depend-on-xpm.patch
-Patch2: 0002-Fixed-compile-install-on-darwin.patch
-#   Patch3 was edited to remove the change to .gitignore, as
-# that file isn't distributed in the release tarball.
-Patch3: 0003-Compile-warning-fixes.patch
-Patch4: 0004-Changed-AsciiSrc-widget-to-use-only-binary-selection.patch
 Patch5: 0005-Correct-wrong-sprintf-call-using-variable-format.patch
 Patch6: 0006-Disable-build-of-xaw6-by-default.patch
 
@@ -43,7 +37,7 @@ Conflicts: libxorg-x11 < 7.0
 Provides: libxaw7 = %{version}-%{release}
 
 %description -n %libxaw7
-Xaw version 7 library
+Xaw version 7 library.
 
 %if %mdkversion < 200900
 %post -n %libxaw7 -p /sbin/ldconfig
@@ -73,7 +67,7 @@ Obsoletes: libxaw-devel < 1.0.3-5
 Provides: libxaw-devel = %{version}-%{release}
 
 %description -n %libxawdevel
-Development files for %{name}
+Development files for %{name}.
 
 %pre -n %libxawdevel
 if [ -h %{_includedir}/X11 ]; then
@@ -101,7 +95,7 @@ Provides: libxaw-static-devel = %{version}-%{release}
 Conflicts: libxorg-x11-static-devel < 7.0
 
 %description -n %libxawstaticdevel
-Static development files for %{name}
+Static development files for %{name}.
 
 %files -n %libxawstaticdevel
 %defattr(-,root,root)
@@ -112,10 +106,6 @@ Static development files for %{name}
 %prep
 %setup -q -n libXaw-%{version}
 
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 %patch5 -p1
 %patch6 -p1
 
