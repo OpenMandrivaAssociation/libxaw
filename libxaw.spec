@@ -24,7 +24,7 @@ BuildRequires: libxmu-devel >= 1.0.0
 BuildRequires: libxpm-devel >= 3.5.4.2
 BuildRequires: libxt-devel >= 1.0.0
 BuildRequires: x11-proto-devel >= 1.0.0
-BuildRequires: x11-util-macros >= 1.0.1
+BuildRequires: x11-util-macros >= 1.3.0
 
 %description
 X Athena Widgets Library.
@@ -82,6 +82,8 @@ fi
 %dir %{_includedir}/X11/Xaw
 %{_includedir}/X11/Xaw/*
 %{_mandir}/man3/Xaw.3.*
+%dir %{_docdir}/libXaw
+%{_docdir}/libXaw/*
 
 #-----------------------------------------------------------
 %package -n %libxawstaticdevel
