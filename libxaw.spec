@@ -6,7 +6,7 @@
 Name: libxaw
 Summary: X Athena Widgets Library
 Version: 1.0.7
-Release: %mkrel 1
+Release: %mkrel 2
 Group: System/Libraries
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -25,7 +25,7 @@ BuildRequires: libxpm-devel >= 3.5.4.2
 BuildRequires: libxt-devel >= 1.0.0
 BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-util-macros >= 1.3.0
-#BuildRequires: groff
+BuildRequires: groff
 
 %description
 X Athena Widgets Library.
@@ -83,9 +83,8 @@ fi
 %dir %{_includedir}/X11/Xaw
 %{_includedir}/X11/Xaw/*
 %{_mandir}/man3/Xaw.3.*
-# XXX: disabled docs until we have a Groff package that can compile them
-#%dir %{_docdir}/libXaw
-#%{_docdir}/libXaw/*
+%dir %{_docdir}/libXaw
+%{_docdir}/libXaw/*
 
 #-----------------------------------------------------------
 %package -n %libxawstaticdevel
