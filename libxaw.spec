@@ -13,8 +13,6 @@ URL: http://xorg.freedesktop.org
 Source0: http://xorg.freedesktop.org/releases/individual/lib/libXaw-%{version}.tar.bz2
 
 Patch5: 0005-Correct-wrong-sprintf-call-using-variable-format.patch
-Patch6: 0006-Disable-build-of-xaw6-by-default.patch
-
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: libx11-devel >= 1.0.0
@@ -108,14 +106,10 @@ Static development files for %{name}.
 
 %prep
 %setup -q -n libXaw-%{version}
-
 %patch5 -p1
-%patch6 -p1
 
 %build
-%configure	--x-includes=%{_includedir}\
-		--x-libraries=%{_libdir}
-
+%configure2_5x --disable-xaw6
 %make
 
 %install
