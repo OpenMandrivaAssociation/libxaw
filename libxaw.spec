@@ -6,7 +6,7 @@
 Name: libxaw
 Summary: X Athena Widgets Library
 Version: 1.0.8
-Release: %mkrel 2
+Release: %mkrel 3
 Group: System/Libraries
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -26,20 +26,22 @@ BuildRequires: x11-util-macros >= 1.3.0
 BuildRequires: groff
 
 %description
-X Athena Widgets Library.
+Xaw is the classic X Athena Widget Set, a widget set based on the
+X Toolkit Intrinsics (Xt) Library.
 
 #-----------------------------------------------------------
 
 %package -n %libxaw7
 Group: System/Libraries
-Summary: Xaw version 7 library
+Summary: X Athena Widgets Library
 Requires: x11-data-bitmaps
 Conflicts: libxorg-x11 < 7.0
 # (walluck): FIXME: we wouldn't provide this but for the packages that incorrectly require it
 Provides: libxaw7 = %{version}-%{release}
 
 %description -n %libxaw7
-Xaw version 7 library.
+Xaw is the classic X Athena Widget Set, a widget set based on the
+X Toolkit Intrinsics (Xt) Library.
 
 %if %mdkversion < 200900
 %post -n %libxaw7 -p /sbin/ldconfig
