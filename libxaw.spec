@@ -4,20 +4,20 @@
 
 Name: libxaw
 Summary: X Athena Widgets Library
-Version: 1.0.9
-Release: 4
+Version: 1.0.10
+Release: 1
 Group: System/Libraries
 License: MIT
 URL: http://xorg.freedesktop.org
 Source0: http://xorg.freedesktop.org/releases/individual/lib/libXaw-%{version}.tar.bz2
-Patch5: 0005-Correct-wrong-sprintf-call-using-variable-format.patch
+Patch0: libXaw-1.0.10-formatstring.patch
 
-BuildRequires: libx11-devel >= 1.0.0
-BuildRequires: libxau-devel >= 1.0.0
-BuildRequires: libxext-devel >= 1.0.0
-BuildRequires: libxmu-devel >= 1.0.0
-BuildRequires: libxpm-devel >= 3.5.4.2
-BuildRequires: libxt-devel >= 1.0.0
+BuildRequires: pkgconfig(x11) >= 1.0.0
+BuildRequires: pkgconfig(xau) >= 1.0.0
+BuildRequires: pkgconfig(xext) >= 1.0.0
+BuildRequires: pkgconfig(xmu) >= 1.0.0
+BuildRequires: pkgconfig(xpm) >= 3.5.4.2
+BuildRequires: pkgconfig(xt) >= 1.0.0
 BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-util-macros >= 1.3.0
 BuildRequires: groff
@@ -52,7 +52,7 @@ Development files for %{name}.
 
 %prep
 %setup -qn libXaw-%{version}
-%patch5 -p1
+%patch0 -p1 -b .fs~
 
 %build
 %configure2_5x \
