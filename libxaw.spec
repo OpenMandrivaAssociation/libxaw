@@ -4,8 +4,8 @@
 
 Name: libxaw
 Summary: X Athena Widgets Library
-Version: 1.0.10
-Release: 2
+Version: 1.0.11
+Release: 1
 Group: System/Libraries
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -64,7 +64,6 @@ Development files for %{name}.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 %files -n %{libxaw7}
@@ -79,4 +78,3 @@ rm -rf %{buildroot}
 %{_mandir}/man3/Xaw.3.*
 %dir %{_docdir}/libXaw
 %{_docdir}/libXaw/*
-
