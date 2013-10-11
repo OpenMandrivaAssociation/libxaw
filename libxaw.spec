@@ -4,14 +4,13 @@
 
 Name:		libxaw
 Summary:	X Athena Widgets Library
-Version:	1.0.11
-Release:	3
+Version:	1.0.12
+Release:	1
 Group:		System/Libraries
 License:	MIT
 Url:		http://xorg.freedesktop.org
 Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXaw-%{version}.tar.bz2
 Patch0:		libXaw-1.0.10-formatstring.patch
-Patch1:		xaw-aarch64.patch
 
 BuildRequires:	pkgconfig(x11) >= 1.0.0
 BuildRequires:	pkgconfig(xau) >= 1.0.0

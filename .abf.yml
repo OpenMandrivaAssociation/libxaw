@@ -1,2 +1,4 @@
+removed_sources:
+  libXaw-1.0.11.tar.bz2: a27556b14e2b4c250afcb98b6e99eebd7623816f
 sources:
-  "libXaw-1.0.11.tar.bz2": a27556b14e2b4c250afcb98b6e99eebd7623816f
+  libXaw-1.0.12.tar.bz2: 6919476379accaf21f2331004e5cfa7939a6786b
