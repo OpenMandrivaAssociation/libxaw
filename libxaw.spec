@@ -5,7 +5,7 @@
 Name:		libxaw
 Summary:	X Athena Widgets Library
 Version:	1.0.12
-Release:	2
+Release:	3
 Group:		System/Libraries
 License:	MIT
 Url:		http://xorg.freedesktop.org
