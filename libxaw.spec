@@ -47,7 +47,7 @@ Development files for %{name}.
 
 %prep
 %setup -qn libXaw-%{version}
-%apply_patches
+%autopatch -p1
 
 %build
 %configure \
