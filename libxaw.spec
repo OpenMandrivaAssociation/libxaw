@@ -4,13 +4,12 @@
 
 Name:		libxaw
 Summary:	X Athena Widgets Library
-Version:	1.0.14
+Version:	1.0.15
 Release:	1
 Group:		System/Libraries
 License:	MIT
 Url:		http://xorg.freedesktop.org
-Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXaw-%{version}.tar.bz2
-
+Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXaw-%{version}.tar.xz
 BuildRequires:	pkgconfig(x11) >= 1.0.0
 BuildRequires:	pkgconfig(xau) >= 1.0.0
 BuildRequires:	pkgconfig(xext) >= 1.0.0
@@ -46,18 +45,17 @@ Provides:	xaw-devel = %{version}-%{release}
 Development files for %{name}.
 
 %prep
-%setup -qn libXaw-%{version}
-%autopatch -p1
+%autosetup -p1 -n libXaw-%{version}
 
 %build
 %configure \
 	--disable-static \
 	--disable-xaw6
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files -n %{libname}
 %{_libdir}/libXaw.so.%{major}
@@ -68,7 +66,7 @@ Development files for %{name}.
 %{_libdir}/pkgconfig/*.pc
 %dir %{_includedir}/X11/Xaw
 %{_includedir}/X11/Xaw/*
-%{_mandir}/man3/Xaw.3.*
+%doc %{_mandir}/man3/Xaw.3.*
 %dir %{_docdir}/libXaw
-%{_docdir}/libXaw/*
+%doc %{_docdir}/libXaw/*
 
